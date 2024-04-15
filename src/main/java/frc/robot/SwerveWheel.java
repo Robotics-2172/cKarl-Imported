@@ -98,7 +98,7 @@ public class SwerveWheel {
 
     // This returns a Rotation2d object with angle equal to the current angle of the wheel
     public Rotation2d getRotation() {
-        return normalize(Rotation2d.fromDegrees(swerveMotor.getSelectedSensorPosition()));
+        return normalize(Rotation2d.fromDegrees(swerveMotor.getSensorCollection().getQuadraturePosition()));
     }
 
     public void setDriveSpeed(double speed) {

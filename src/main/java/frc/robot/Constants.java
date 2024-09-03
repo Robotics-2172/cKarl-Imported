@@ -54,14 +54,14 @@ public final class Constants {
 
         public final static class DriveMotors {
             public final static double maxSpeed = 0.3; // The maximum output power of the drive motors
-            public final static double rotationScalar = 0.001; // The scaling of rotation speed relative to default
+            public final static double rotationScalar = 0.1; // The scaling of rotation speed relative to default
             public final static double slewLimit = 1000; // Maximum input rate of change
 
             // These are the CAN IDs of each drive motor
-            public final static int FL = 6;
-            public final static int FR = 4;
-            public final static int BR = 8;
-            public final static int BL = 5;
+            public final static int FL = 2;
+            public final static int FR = 7;
+            public final static int BR = 5;
+            public final static int BL = 10;
         }
 
         public final static class SwerveMotors {
@@ -69,34 +69,34 @@ public final class Constants {
             public final static int FL = 1;
             public final static Boolean FLr = false;
 
-            public final static int FR = 3;
+            public final static int FR = 6;
             public final static Boolean FRr = false;
 
-            public final static int BR = 7;
+            public final static int BR = 4;
             public final static Boolean BRr = false;
 
-            public final static int BL = 5;
+            public final static int BL = 8;
             public final static Boolean BLr = false;
         }
 
         public final static class SwerveEncoders {
-            public final static double encoderRatio = 0.1;//((360.0 / 71) * (48.0 / 40)) / 7; // The ratio applied to the encoder counts such that one full rotation = 360 distance
+            public final static double encoderRatio = ((360.0 / 71) * (48.0 / 40)) / 7; // The ratio applied to the encoder counts such that one full rotation = 360 distance
             
             // These are the DIO ports used by each encoder, along with if any encoder direction should be reversed
-            public final static int FLa = 2;
-            public final static int FLb = 3;
+            public final static int FLa = 1;
+            public final static int FLb = 0;
             public final static Boolean FLr = false;
 
-            public final static int FRa = 0;
-            public final static int FRb = 1;
+            public final static int FRa = 3;
+            public final static int FRb = 2;
             public final static Boolean FRr = false;
 
-            public final static int BRa = 5;
-            public final static int BRb = 6;
+            public final static int BRa = 4;
+            public final static int BRb = 5;
             public final static Boolean BRr = false;
 
-            public final static int BLa = 8;
-            public final static int BLb = 9;
+            public final static int BLa = 6;
+            public final static int BLb = 7;
             public final static Boolean BLr = false;
         }
         

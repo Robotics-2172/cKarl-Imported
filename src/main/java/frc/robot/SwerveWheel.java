@@ -33,6 +33,7 @@ public class SwerveWheel {
                 driveMotor = new WPI_TalonSRX(DriveMotors.FL); // Creates a new WPI_VictorSPX object at the given CAN ID for the drive motor (WPI version of the VictorSPX object)
                 swerveMotor = new WPI_TalonSRX(SwerveMotors.FL); // Same as previous, but fo the turning motor
                 swerveMotor.setInverted(SwerveMotors.FLr);
+                driveMotor.setInverted(false);
                 swerveEncoder = new Encoder(SwerveEncoders.FLa, SwerveEncoders.FLb, // Creates a new Encoder object using the numbered DIO ports (FLa and FLb)
                 SwerveEncoders.FLr); // and reverses it if necessary
                 wheelPos = new Translation2d(Translations.FLx, Translations.FLy); // Creates a new Translation2d object that hold the position of this swerve module relative to the center of the robot

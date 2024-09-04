@@ -24,8 +24,8 @@ public final class Constants {
     public final static class Motors {
         public final static class Translations { // These are the x and y locations of each module of the swerve drive (relative to the robot center)
             // 8.125in x 14.75in
-            public final static double width = 8.125; // In inches, but units don't matter
-            public final static double length = 14.75;
+            public final static double width = 1; // In inches, but units don't matter
+            public final static double length = 1.25;
 
             public final static double FLx = length / 2;
             public final static double FLy = width / 2;
@@ -53,8 +53,8 @@ public final class Constants {
         }
 
         public final static class DriveMotors {
-            public final static double maxSpeed = 0.3; // The maximum output power of the drive motors
-            public final static double rotationScalar = 0.1; // The scaling of rotation speed relative to default
+            public final static double maxSpeed = 1; // The maximum output power of the drive motors
+            public final static double rotationScalar = 1; // The scaling of rotation speed relative to default
             public final static double slewLimit = 1000; // Maximum input rate of change
 
             // These are the CAN IDs of each drive motor
@@ -67,16 +67,16 @@ public final class Constants {
         public final static class SwerveMotors {
             // These are the CAN IDs of each turning motor
             public final static int FL = 1;
-            public final static Boolean FLr = false;
+            public final static Boolean FLr = true;
 
             public final static int FR = 6;
-            public final static Boolean FRr = false;
+            public final static Boolean FRr = true;
 
             public final static int BR = 4;
-            public final static Boolean BRr = false;
+            public final static Boolean BRr = true;
 
             public final static int BL = 8;
-            public final static Boolean BLr = false;
+            public final static Boolean BLr = true;
         }
 
         public final static class SwerveEncoders {
@@ -85,19 +85,19 @@ public final class Constants {
             // These are the DIO ports used by each encoder, along with if any encoder direction should be reversed
             public final static int FLa = 1;
             public final static int FLb = 0;
-            public final static Boolean FLr = false;
+            public final static Boolean FLr = true;
 
             public final static int FRa = 3;
             public final static int FRb = 2;
-            public final static Boolean FRr = false;
+            public final static Boolean FRr = true;
 
             public final static int BRa = 4;
             public final static int BRb = 5;
-            public final static Boolean BRr = false;
+            public final static Boolean BRr = true;
 
             public final static int BLa = 6;
             public final static int BLb = 7;
-            public final static Boolean BLr = false;
+            public final static Boolean BLr = true;
         }
         
         // This enumerable is used to shorten the definition of each SwerveWheel object in Robot.java

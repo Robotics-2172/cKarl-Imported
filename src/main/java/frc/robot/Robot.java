@@ -16,6 +16,8 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Constants.Motors.DriveMotors;
 import frc.robot.Constants.Motors.kMotors;
 import frc.robot.Constants.Motors.Translations.CenterTranslations;
+
+import com.ctre.phoenix6.hardware.Pigeon2;
 import com.kauailabs.navx.frc.AHRS;
 
 /**
@@ -45,7 +47,7 @@ public class Robot extends TimedRobot {
   Translation2d centerRotation;
 
   // Adds gyro functionality
-   AHRS gyro;
+   Pigeon2 gyro;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -77,7 +79,7 @@ public class Robot extends TimedRobot {
     centerRotation = new Translation2d(0, 0);
 
     // Initializes the gyro
-    gyro = new AHRS(I2C.Port.kOnboard);
+    gyro = new Pigeon2(31);
   }
 
   /**
@@ -105,12 +107,12 @@ public class Robot extends TimedRobot {
       // Because of the above assumption, the rotation joystick needs to be scaled to balance movement with rotation
       // For example, without the scalar, the robot would rotate at 1 rad/s at maximum rotate (and thus take the same amount of time to rotate once as to travel six meters)
       // The scalar exists to customize this to fit user need
-      xbox.getRawAxis(XboxController.Axis.kRightX.value) * DriveMotors.rotationScalar, // Xbox controller
+      xbox.getRawAxis(XboxController.Axis.kRightX.value) * -DriveMotors.rotationScalar, // Xbox controller
 
       // This is needed because of the field relative nature of this object; if a gyro is used, this should be the gyro
       // If used with a gyro, this allows for the joystick to operate the robot in the same directions regardless of robot orientation
       // i.e. Up on the left joystick always moves the robot away from the user regardless of its rotation
-      Rotation2d.fromDegrees(gyro.getYaw()));
+      Rotation2d.fromDegrees(gyro.getAngle()).plus(Rotation2d.fromDegrees(90)));
     switch (xbox.getPOV()) {
       case -1: {
         centerRotation = CenterTranslations.C;
@@ -161,7 +163,7 @@ public class Robot extends TimedRobot {
       centerRotation = CenterTranslations.FF;
     }
     if (xbox.getXButton()) {
-      gyro.zeroYaw();
+      gyro.reset();
     }
   
     
@@ -184,9 +186,9 @@ public class Robot extends TimedRobot {
 
     // Tells each SwerveWheel to update its PID loop with its assigned state
     // The index numbers on goalStates are due to the order in which the modules were added above
-    wheelFL.updatePID(goalStates[1], xbox);
-    wheelFR.updatePID(goalStates[0], xbox);
-    wheelBR.updatePID(goalStates[3], xbox);
-    wheelBL.updatePID(goalStates[2], xbox);
+    wheelFL.updatePID(goalStates[3], xbox);
+    wheelFR.updatePID(goalStates[2], xbox);
+    wheelBR.updatePID(goalStates[1], xbox);
+    wheelBL.updatePID(goalStates[0], xbox);
   }
 }
